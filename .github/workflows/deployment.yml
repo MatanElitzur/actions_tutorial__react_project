@@ -17,6 +17,9 @@ jobs:
       - name:  Run tests
         run: npm test
   deploy: #Choose you own name
+    #needs: --> This is a job dependency, if the upper test job will succeed this job will start
+    #we can have several job dependencies needs: [test, job2]
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code
