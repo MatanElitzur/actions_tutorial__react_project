@@ -6,7 +6,6 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3 #uses keyword --> To use a defined action, v3 is the version
-        #with: #with key words defends on the action we use
       - name: Install nodejs
         uses: actions/setup-node@v3 # to install specific nodejs version , remmber node is installed in the runner, see comment in line 5
           with: 
