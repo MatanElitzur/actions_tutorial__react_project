@@ -1,5 +1,7 @@
 name: Deploy Project
-on: push
+#Those are the triggers we use,
+#workflow_dispatch for trigger via the github UI manually
+on: [push, workflow_dispatch]
 jobs:
   test: #Choose you own name
     #node already installed on ubuntu
