@@ -1,0 +1,35 @@
+name: Deploy Project
+on: push
+jobs:
+  test: #Choose you own name
+    #node already installed on ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3 #uses keyword --> To use a defined action, v3 is the version
+      - name: Install nodejs
+        #to install a specific nodejs version, remember node is installed in the runner, see comment in line 5
+        uses: actions/setup-node@v3
+        with: 
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name:  Run tests
+        run: npm test
+  deploy: #Choose you own name
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        # actions/checkout@v3 --> to download the current code in this repository
+        uses: actions/checkout@v3 #uses keyword --> To use a defined action, v3 is the version
+      - name: Install nodejs
+        #to install a specific nodejs version, remember node is installed in the runner, see comment in line 5
+        uses: actions/setup-node@v3
+        with: 
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build # invoke the build in the script section in the package.json
+      - name: Deploy
+        run: echo "Deploying ..."
